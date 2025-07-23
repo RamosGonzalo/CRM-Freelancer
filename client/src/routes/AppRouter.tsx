@@ -2,18 +2,22 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "../pages/Login"
 import Registro from "../pages/Registro"
 import Panel from "../pages/Panel"
+import AuthLayout from "../layout/AuthLayout";
 
 const AppRouter = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/registro" element={<Registro />} />
+                {/* Rutas publicas */}
+                <Route element={<AuthLayout />}>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/registro" element={<Registro />} />
+                </Route>
                 
                 {/* Ruta protegida */}
                 <Route path="/panel" element={<Panel />} />
                 
-                {/* Redirecciona a /login por defecto */}
+                {/* Ruta por defecto */}
                 <Route path="*" element={<Navigate to="/login" />} />
             </Routes>
         </BrowserRouter>
