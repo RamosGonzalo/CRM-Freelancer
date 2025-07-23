@@ -3,6 +3,10 @@ import { Usuario } from "../models/Usuario";
 import bcrypt from "bcryptjs"
 import { generarJWT } from "../helpers/generarJWT";
 
+interface AuthRequest extends Request {
+    usuario?: any
+}
+
 export const registrarUsuario = async (req: Request, res: Response) => {
     const { nombre, email, password } = req.body
 
@@ -62,5 +66,33 @@ export const autenticarUsuario = async (req: Request, res: Response) => {
     } catch (error) {
         console.error('Error al autenticar usuario:', error)
         res.status(500).json({ msg: 'Error en el servidor' })
+    }
+}
+
+export const cambiarPassword = async (req: AuthRequest, res: Response) => {
+    const { passwordActual, passwordNuevo } = req.body
+
+    try {
+        const usuario = await Usuario.findById(req.usuario._id)
+
+        if (!usuario)
+        {
+            return res.status(404).json({ msg: 'Usuario no encontrado' })
+        }
+
+        const passwordCorrecto = await bcrypt.compare(passwordActual, usuario.password)
+        if (!passwordCorrecto)
+        {
+            return res.status(403).json({ msg: 'La contraseña actual es incorrecta' })
+        }
+
+        const salt = await bcrypt.genSalt(10)
+        usuario.password = await bcrypt.hash(passwordNuevo, salt)
+        await usuario.save()
+
+        res.json({ msg: 'Contraseña actualizada correctamente' })
+    } catch (error) {
+        console.error('Error al cambiar contraseña', error)
+        res.status(500).json({ msg: 'Hubo un error al actualizar la contraseña' })
     }
 }
