@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { AxiosError } from "axios";
 import clienteAxios from "../config/axios";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const { setAuth } = useContext(AuthContext)
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -32,6 +34,8 @@ const Login = () => {
 
             setError("");
             localStorage.setItem("token", data.token);
+            const usuario = data.usuario;
+            setAuth(usuario);
             navigate("/panel");
         } catch (error) {
             const err = error as AxiosError<{ msg: string }>;

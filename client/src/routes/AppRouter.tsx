@@ -3,6 +3,7 @@ import Login from "../pages/Login"
 import Registro from "../pages/Registro"
 import Panel from "../pages/Panel"
 import AuthLayout from "../layout/AuthLayout";
+import RutaProtegida from "../components/RutaProtegida";
 
 const AppRouter = () => {
     return (
@@ -15,7 +16,9 @@ const AppRouter = () => {
                 </Route>
                 
                 {/* Ruta protegida */}
-                <Route path="/panel" element={<Panel />} />
+                <Route path="/panel" element={<RutaProtegida />} >
+                    <Route index element={<Panel />} />
+                </Route>
                 
                 {/* Ruta por defecto */}
                 <Route path="*" element={<Navigate to="/login" />} />
