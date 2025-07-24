@@ -45,5 +45,3 @@ Es una aplicación **Fullstack** construida con el stack **MERN (MongoDB, Expres
 - ⚙️ Panel privado para usuarios autenticados
 - 🌐 Interfaz moderna y responsiva
 - 🛠️ Código limpio y modular, fácil de escalar
-
----
