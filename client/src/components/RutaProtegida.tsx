@@ -5,9 +5,9 @@ import { AuthContext } from "../context/AuthContext";
 const RutaProtegida = () => {
     const { auth } = useContext(AuthContext)
 
-    if (!auth?.id)
+    if (auth === null || !auth.id) 
     {
-        return <Navigate to="/" />
+        return <Navigate to="/" />;
     }
 
     return <Outlet />

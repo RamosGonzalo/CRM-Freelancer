@@ -4,6 +4,8 @@ import Registro from "../pages/Registro"
 import Panel from "../pages/Panel"
 import AuthLayout from "../layout/AuthLayout";
 import RutaProtegida from "../components/RutaProtegida";
+import AdminLayout from "../layout/AdminLayout";
+import Clientes from "../pages/Clientes";
 
 const AppRouter = () => {
     return (
@@ -17,7 +19,10 @@ const AppRouter = () => {
                 
                 {/* Ruta protegida */}
                 <Route path="/panel" element={<RutaProtegida />} >
-                    <Route index element={<Panel />} />
+                    <Route element={<AdminLayout />}>
+                        <Route index element={<Panel />} />
+                        <Route path="clientes" element={<Clientes />} />
+                    </Route>
                 </Route>
                 
                 {/* Ruta por defecto */}
