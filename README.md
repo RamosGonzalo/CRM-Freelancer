@@ -49,4 +49,5 @@ Es una aplicación **Fullstack** construida con el stack **MERN (MongoDB, Expres
 ---
 
 ## 👨‍💻 Autor
-- Desarrollado con pasión por <a href="github.com/ramosgonzalo">Gonzalo Ramos</a>
+
+- Desarrollado con pasión por [Gonzalo Ramos](https://github.com/RamosGonzalo)
