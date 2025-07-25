@@ -1,8 +1,27 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import clienteService from "../services/clienteService";
 
 
 const Panel = () => {
     const navigate = useNavigate()
+    const [totalClientes, setTotalClientes] = useState(0)
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+
+        const obtenerClientes = async () => {
+            try {
+                const clientes = await clienteService.obtenerClientes(token);
+                setTotalClientes(clientes.length);
+            } catch (error) {
+                console.error("Error al cargar total de clientes", error)
+            }
+        }
+
+        obtenerClientes();
+    }, [])
 
     return (
         <section className="font-inter px-6 py-10 space-y-12">
@@ -15,7 +34,7 @@ const Panel = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="bg-white p-6 rounded-xl shadow-md">
                     <p className="text-slate-500 text-sm">Clientes</p>
-                    <p className="text-3xl font-bold text-cyan-600">5</p>
+                    <p className="text-3xl font-bold text-cyan-600">{totalClientes}</p>
                 </div>
                 <div className="bg-white p-6 rounded-xl shadow-md">
                     <p className="text-slate-500 text-sm">Tareas completadas</p>
