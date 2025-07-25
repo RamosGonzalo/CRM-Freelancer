@@ -32,3 +32,18 @@ export const confirmarEliminacion = async (): Promise<boolean> => {
 
     return res.isConfirmed;
 };
+
+export const confirmarCerrarSesion = async (): Promise<boolean> => {
+    const res = await Swal.fire({
+        title: "¿Cerrar sesión?",
+        text: "¿Estás seguro que querés salir de tu cuenta?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#ef4444",
+        cancelButtonColor: "#94a3b8",
+        confirmButtonText: "Sí, cerrar",
+        cancelButtonText: "Cancelar",
+    });
+
+    return res.isConfirmed;
+};

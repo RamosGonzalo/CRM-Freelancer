@@ -1,16 +1,20 @@
 import { Outlet, useNavigate } from "react-router-dom"
 import { AuthContext } from "../context/AuthContext"
 import { useContext } from "react"
+import { confirmarCerrarSesion } from "../helpers/alerta"
 
 const AdminLayout = () => {
     const { auth, setAuth } = useContext(AuthContext)
     const navigate = useNavigate()
 
-    const cerrarSesion = () => {
-        localStorage.removeItem("token")
-        setAuth(null)
-        navigate("/login")
-    }
+    const cerrarSesion = async () => {
+        const confirmar = await confirmarCerrarSesion();
+        if (!confirmar) return;
+
+        localStorage.removeItem("token");
+        setAuth(null);
+        navigate("/login");
+    };
 
     return (
         <div className="min-h-screen bg-slate-50">
