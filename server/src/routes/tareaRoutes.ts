@@ -9,4 +9,4 @@ tareaRoutes.get("/", checkAuth, listarTareas);
 tareaRoutes.put("/:id", checkAuth, editarTarea);
 tareaRoutes.delete("/:id", checkAuth, eliminarTarea);
 
-export default tareaRoutes;
+export default tareaRoutes

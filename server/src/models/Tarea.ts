@@ -35,4 +35,4 @@ const tareaSchema = new mongoose.Schema(
     }
 )
 
-export const Tarea = mongoose.model("Tarea", tareaSchema);
+export const Tarea = mongoose.model("Tarea", tareaSchema)

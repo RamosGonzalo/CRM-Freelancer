@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { Tarea } from "../models/Tarea";
 
 interface AuthRequest extends Request {
-    usuario?: any;
+    usuario?: any
 }
 
 export const crearTarea = async (req: AuthRequest, res: Response) => {
