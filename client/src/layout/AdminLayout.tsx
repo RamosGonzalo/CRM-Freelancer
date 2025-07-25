@@ -19,9 +19,13 @@ const AdminLayout = () => {
     return (
         <div className="min-h-screen bg-slate-50">
             <header className="bg-neutral-200 shadow px-6 py-4 flex justify-between items-center">
-                <h1 className="text-2xl font-bold italic">
+                <h1
+                onClick={() => navigate("/panel")}
+                className="text-2xl font-bold italic cursor-pointer select-none">
                     <span className="bg-gradient-to-r from-cyan-600 to-blue-800 bg-clip-text text-transparent">
-                        Free</span><span className="text-slate-700">Manage</span>
+                        Free
+                    </span>
+                    <span className="text-slate-700">Manage</span>
                 </h1>
                 <div className="flex items-center gap-4">
                     <p className="text-slate-500 text-md">Hola, {auth?.nombre}</p>
