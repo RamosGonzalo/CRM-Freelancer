@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import { conectarBD } from './config/db'
 import usuarioRoutes from './routes/usuarioRoutes'
 import clienteRoutes from './routes/clienteRoutes'
+import tareaRoutes from './routes/tareaRoutes'
 
 dotenv.config()
 conectarBD()
@@ -14,6 +15,7 @@ app.use(express.json())
 
 app.use('/api/usuarios', usuarioRoutes)
 app.use('/api/clientes', clienteRoutes)
+app.use('/api/tareas', tareaRoutes)
 
 app.get('/', (_req, res) => {
     res.send('API del CRM funcionando 💼')
