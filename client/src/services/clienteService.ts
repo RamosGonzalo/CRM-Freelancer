@@ -20,6 +20,23 @@ const clienteService = {
         });
         return res.data;
     },
+    editarCliente: async (id: string, datos: Cliente, token: string) => {
+        const url = `${API_URL}/${id}`
+        const res = await axios.put(url, datos, {
+            headers: {
+            Authorization: `Bearer ${token}`,
+            }
+        });
+        return res.data;
+    },
+    eliminarCliente: async (id: string, token: string) => {
+        const url = `${API_URL}/${id}`;
+        await axios.delete(url, {
+            headers: {
+            Authorization: `Bearer ${token}`,
+            },
+        });
+    },
 };
 
 export default clienteService;
