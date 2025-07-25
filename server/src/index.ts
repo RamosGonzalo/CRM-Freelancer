@@ -5,7 +5,7 @@ import { conectarBD } from './config/db'
 import usuarioRoutes from './routes/usuarioRoutes'
 import clienteRoutes from './routes/clienteRoutes'
 import tareaRoutes from './routes/tareaRoutes'
-import pagoRoutes from './routes/pageRoutes';
+import pagoRoutes from './routes/pagoRoutes';
 
 dotenv.config()
 conectarBD()
