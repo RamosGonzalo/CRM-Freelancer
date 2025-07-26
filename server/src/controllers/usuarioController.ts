@@ -96,3 +96,39 @@ export const cambiarPassword = async (req: AuthRequest, res: Response) => {
         res.status(500).json({ msg: 'Hubo un error al actualizar la contraseña' })
     }
 }
+
+export const actualizarPerfil = async (req: AuthRequest, res: Response) => {
+    try {
+        const usuario = await Usuario.findById(req.usuario._id);
+
+        if (!usuario) {
+            return res.status(404).json({ msg: "Usuario no encontrado" });
+        }
+
+        const { nombre, email } = req.body;
+
+        if (usuario.email !== email) {
+            const existeEmail = await Usuario.findOne({ email });
+            if (existeEmail) {
+                return res.status(400).json({ msg: "El email ya está en uso por otro usuario" });
+            }
+        }
+
+        usuario.nombre = nombre || usuario.nombre;
+        usuario.email = email || usuario.email;
+
+        const usuarioActualizado = await usuario.save();
+
+        res.json({
+            msg: "Perfil actualizado correctamente",
+            usuarioActualizado: {
+                _id: usuarioActualizado._id,
+                nombre: usuarioActualizado.nombre,
+                email: usuarioActualizado.email,
+            },
+        });
+    } catch (error) {
+        console.error("Error al actualizar perfil", error);
+        res.status(500).json({ msg: "Hubo un error al actualizar el perfil" });
+    }
+};
