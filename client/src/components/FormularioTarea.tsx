@@ -81,7 +81,7 @@ const FormularioTarea = ({ onClose, onTareaAgregada, tarea }: Props) => {
                 value={form.titulo}
                 onChange={handleChange}
                 required
-                className="w-full border cursor-pointer p-2 rounded"
+                className="w-full border p-2 rounded"
             />
             </div>
 
@@ -92,7 +92,7 @@ const FormularioTarea = ({ onClose, onTareaAgregada, tarea }: Props) => {
                 name="descripcion"
                 value={form.descripcion}
                 onChange={handleChange}
-                className="w-full border cursor-pointer p-2 rounded"
+                className="w-full border p-2 rounded"
             />
             </div>
 
@@ -104,7 +104,7 @@ const FormularioTarea = ({ onClose, onTareaAgregada, tarea }: Props) => {
                 name="fechaEntrega"
                 value={form.fechaEntrega}
                 onChange={handleChange}
-                className="w-full border cursor-pointer p-2 rounded"
+                className="w-full border p-2 rounded"
             />
             </div>
 
@@ -116,7 +116,7 @@ const FormularioTarea = ({ onClose, onTareaAgregada, tarea }: Props) => {
                 value={form.cliente}
                 onChange={handleChange}
                 required
-                className="w-full border cursor-pointer p-2 rounded"
+                className="w-full border p-2 rounded"
             >
                 <option value="">-- Seleccionar --</option>
                 {clientes.map((cliente) => (
@@ -135,10 +135,10 @@ const FormularioTarea = ({ onClose, onTareaAgregada, tarea }: Props) => {
                     value={form.estado}
                     onChange={handleChange}
                     required
-                    className="w-full border cursor-pointer p-2 rounded"
+                    className="w-full border p-2 rounded"
                 >
                     <option value="pendiente">Pendiente</option>
-                    <option value="completada">Completada</option>
+                    <option value="finalizado">Completada</option>
                 </select>
             </div>
 
