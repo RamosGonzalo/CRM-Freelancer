@@ -89,7 +89,7 @@ const Registro = () => {
 
                 <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-cyan-600 to-blue-700 text-white py-2.5 rounded-lg hover:from-cyan-700 hover:to-blue-800 transition-all shadow-md"
+                    className="w-full bg-gradient-to-r from-cyan-600 to-blue-700 text-white cursor-pointer py-2.5 rounded-lg hover:from-cyan-700 hover:to-blue-800 transition-all shadow-md"
                 >
                     Crear cuenta
                 </button>

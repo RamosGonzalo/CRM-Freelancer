@@ -6,6 +6,7 @@ import AuthLayout from "../layout/AuthLayout";
 import RutaProtegida from "../components/RutaProtegida";
 import AdminLayout from "../layout/AdminLayout";
 import Clientes from "../pages/Clientes";
+import Tareas from "../pages/Tareas";
 
 const AppRouter = () => {
     return (
@@ -22,6 +23,7 @@ const AppRouter = () => {
                     <Route element={<AdminLayout />}>
                         <Route index element={<Panel />} />
                         <Route path="clientes" element={<Clientes />} />
+                        <Route path="tareas" element={<Tareas />} />
                     </Route>
                 </Route>
                 

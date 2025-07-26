@@ -87,8 +87,10 @@ const Panel = () => {
                     >
                         👥 Ver Clientes
                     </button>
-                    <button className="bg-blue-600 text-white cursor-pointer px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-                        ✅ Nueva Tarea
+                    <button 
+                        onClick={() => navigate("/panel/tareas")}
+                        className="bg-blue-600 text-white cursor-pointer px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                        ✅ Ver Tareas
                     </button>
                     <button className="bg-green-600 text-white cursor-pointer px-4 py-2 rounded-lg hover:bg-green-700 transition">
                         💸 Registrar Pago
