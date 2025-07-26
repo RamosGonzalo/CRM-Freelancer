@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import clienteService from "../services/clienteService";
 import tareaService from "../services/tareaService";
 import type { Tarea } from "../types/Tarea";
+import { formatearFecha } from '../helpers/formatearFecha';
+import pagoService from "../services/pagoService";
+import type { Pago } from "../types/Pago";
+
 
 const Panel = () => {
     const navigate = useNavigate()
@@ -10,6 +14,9 @@ const Panel = () => {
     const [completadas, setCompletadas] = useState(0);
     const [pendientes, setPendientes] = useState(0);
     const [proximas, setProximas] = useState<Tarea[]>([]);
+    const [totalPagado, setTotalPagado] = useState(0);
+    const [ultimos, setUltimos] = useState<Pago[]>([]);
+    const [monedaSeleccionada, setMonedaSeleccionada] = useState("USD");
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -28,17 +35,25 @@ const Panel = () => {
                     .filter(t => t.estado === "pendiente")
                     .sort((a, b) => new Date(a.fechaEntrega).getTime() - new Date(b.fechaEntrega).getTime())
                     .slice(0, 2);
-
+                const pagosBD = await pagoService.obtenerPagos(token);
+                const pagosFiltrados = pagosBD.filter(p => p.estado === "pagado" && p.moneda === monedaSeleccionada);
+                const total = pagosFiltrados.reduce((acc, pago) => acc + pago.monto, 0);
+                const ultimosPagos = pagosFiltrados.slice(-2).reverse(); // últimos dos pagos recientes
+                
+                
+                
                 setCompletadas(completadas);
                 setPendientes(pendientes);
                 setProximas(proximas);
+                setTotalPagado(total);
+                setUltimos(ultimosPagos);
             } catch (error) {
                 console.error("Error al cargar panel", error)
             }
         };
 
         obtenerDatos();
-    }, []);
+    }, [monedaSeleccionada]);
 
     return (
         <section className="font-inter px-6 py-10 space-y-12">
@@ -51,19 +66,32 @@ const Panel = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="bg-white p-6 rounded-xl shadow-md">
                     <p className="text-slate-500 text-sm">Clientes</p>
-                    <p className="text-3xl font-bold text-cyan-600">{totalClientes}</p>
+                    <p className="text-3xl font-bold mt-4 text-cyan-600">{totalClientes}</p>
                 </div>
                 <div className="bg-white p-6 rounded-xl shadow-md">
                     <p className="text-slate-500 text-sm">Tareas completadas</p>
-                    <p className="text-3xl font-bold text-green-600">{completadas}</p>
+                    <p className="text-3xl font-bold mt-4 text-green-600">{completadas}</p>
                 </div>
                 <div className="bg-white p-6 rounded-xl shadow-md">
-                    <p className="text-slate-500 text-sm">Pagos recibidos</p>
-                    <p className="text-3xl font-bold text-blue-600">$1.200</p>
+                    <div className="flex justify-between items-center">
+                        <p className="text-slate-500 text-sm">Pagos recibidos</p>
+                        <select
+                            value={monedaSeleccionada}
+                            onChange={e => setMonedaSeleccionada(e.target.value)}
+                            className="border border-slate-300 text-sm cursor-pointer px-2 py-1 rounded"
+                        >
+                            <option value="ARS">ARS</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                        </select>
+                    </div>
+                    <p className="text-3xl font-bold mt-2 text-blue-600">
+                        {totalPagado} {monedaSeleccionada}
+                    </p>
                 </div>
                 <div className="bg-white p-6 rounded-xl shadow-md">
                     <p className="text-slate-500 text-sm">Tareas pendientes</p>
-                    <p className="text-3xl font-bold text-orange-500">{pendientes}</p>
+                    <p className="text-3xl font-bold mt-4 text-orange-500">{pendientes}</p>
                 </div>
             </div>
 
@@ -74,7 +102,7 @@ const Panel = () => {
                         <li key={tarea._id} className="p-4 flex justify-between">
                             <span>{tarea.titulo}</span>
                             <span className="text-sm text-slate-500">
-                                {new Date(tarea.fechaEntrega).toLocaleDateString("es-AR", { timeZone: "UTC" })}
+                                {formatearFecha(tarea.fechaEntrega)}
                             </span>
                         </li>
                     ))}
@@ -84,14 +112,14 @@ const Panel = () => {
             <div>
                 <h3 className="text-xl font-semibold text-slate-700 mb-4">Últimos pagos recibidos</h3>
                 <ul className="bg-white rounded-xl shadow divide-y divide-slate-200">
-                    <li className="p-4 flex justify-between">
-                        <span>Cliente C</span>
-                        <span className="text-blue-600 font-medium">$500</span>
-                    </li>
-                    <li className="p-4 flex justify-between">
-                        <span>Cliente D</span>
-                        <span className="text-blue-600 font-medium">$700</span>
-                    </li>
+                    {ultimos.map(pago => (
+                        <li key={pago._id} className="p-4 flex justify-between">
+                            <span>{pago.cliente.nombre}</span>
+                            <span className="text-blue-600 font-medium">
+                                ${pago.monto} {pago.moneda}
+                            </span>
+                        </li>
+                    ))}
                 </ul>
             </div>
 
@@ -109,7 +137,9 @@ const Panel = () => {
                         className="bg-blue-600 text-white cursor-pointer px-4 py-2 rounded-lg hover:bg-blue-700 transition">
                         ✅ Ver Tareas
                     </button>
-                    <button className="bg-green-600 text-white cursor-pointer px-4 py-2 rounded-lg hover:bg-green-700 transition">
+                    <button
+                        onClick={() => navigate("/panel/pagos")}
+                        className="bg-green-600 text-white cursor-pointer px-4 py-2 rounded-lg hover:bg-green-700 transition">
                         💸 Ver Pagos
                     </button>
                 </div>

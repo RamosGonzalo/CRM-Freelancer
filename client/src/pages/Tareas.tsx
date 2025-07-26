@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import FormularioTarea from "../components/FormularioTarea";
 import { confirmarEliminacion, alertaExito, alertaError } from "../helpers/alerta";
+import { formatearFecha } from "../helpers/formatearFecha";
 
 const Tareas = () => {
     const [tareas, setTareas] = useState<Tarea[]>([]);
@@ -96,9 +97,7 @@ const Tareas = () => {
                             <td className="p-4">{tarea.titulo}</td>
                             <td className="p-4">{tarea.cliente?.nombre}</td>
                             <td className="p-4">{tarea.descripcion}</td>
-                            <td className="p-4">{new Date(tarea.fechaEntrega).toLocaleDateString("es-AR", {
-                                timeZone: "UTC"
-                                })}
+                            <td className="p-4">{formatearFecha(tarea.fechaEntrega)}
                             </td>
                             <td className="p-4 capitalize">
                                 <span className={`px-1 py-1 rounded text-xs font-medium 
