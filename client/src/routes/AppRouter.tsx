@@ -8,6 +8,7 @@ import AdminLayout from "../layout/AdminLayout";
 import Clientes from "../pages/Clientes";
 import Tareas from "../pages/Tareas";
 import Pagos from "../pages/Pagos";
+import Perfil from "../pages/Perfil";
 
 const AppRouter = () => {
     return (
@@ -26,6 +27,7 @@ const AppRouter = () => {
                         <Route path="clientes" element={<Clientes />} />
                         <Route path="tareas" element={<Tareas />} />
                         <Route path="pagos" element={<Pagos />} />
+                        <Route path="perfil" element={<Perfil />} />
                     </Route>
                 </Route>
                 

@@ -2,6 +2,7 @@ import { Outlet, useNavigate } from "react-router-dom"
 import { AuthContext } from "../context/AuthContext"
 import { useContext } from "react"
 import { confirmarCerrarSesion } from "../helpers/alerta"
+import { FiLogOut, FiUser } from "react-icons/fi";
 
 const AdminLayout = () => {
     const { auth, setAuth } = useContext(AuthContext)
@@ -30,9 +31,17 @@ const AdminLayout = () => {
                 <div className="flex items-center gap-4">
                     <p className="text-slate-500 text-md">Hola, {auth?.nombre}</p>
                     <button
-                        onClick={cerrarSesion}
-                        className="text-sm cursor-pointer bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
+                        onClick={() => navigate("/panel/perfil")}
+                        className="flex items-center gap-1 text-sm cursor-pointer bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600 transition"
                     >
+                        <FiUser />
+                        Ver perfil
+                    </button>
+                    <button
+                        onClick={cerrarSesion}
+                        className="flex items-center gap-1 text-sm cursor-pointer bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
+                    >
+                        <FiLogOut />
                         Cerrar sesión
                     </button>
                 </div>
