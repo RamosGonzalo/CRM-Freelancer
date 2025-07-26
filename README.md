@@ -11,7 +11,7 @@ FreeManage permite a freelancers:
 - Registrar y autenticar su cuenta
 - Crear y gestionar clientes
 - Editar y eliminar información de cada cliente
-- Seguir el historial de pagos y tareas (próximamente)
+- Seguir el historial de pagos y tareas
 - Todo en una interfaz moderna, clara y responsiva
 
 Es una aplicación **Fullstack** construida con el stack **MERN (MongoDB, Express, React, Node.js)** + **TypeScript**.
