@@ -47,3 +47,18 @@ export const confirmarCerrarSesion = async (): Promise<boolean> => {
 
     return res.isConfirmed;
 };
+
+export const confirmarCambiarPassword = async (): Promise<boolean> => {
+    const res = await Swal.fire({
+        title: "¿Cambiar contraseña?",
+        text: "¿Estás seguro que querés cambiar tu contraseña?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#ef4444",
+        cancelButtonColor: "#94a3b8",
+        confirmButtonText: "Sí, cambiar",
+        cancelButtonText: "Cancelar",
+    })
+
+    return res.isConfirmed;
+}

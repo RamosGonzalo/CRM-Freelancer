@@ -9,6 +9,9 @@ import Clientes from "../pages/Clientes";
 import Tareas from "../pages/Tareas";
 import Pagos from "../pages/Pagos";
 import Perfil from "../pages/Perfil";
+import CambiarPassword from "../pages/CambiarPassword";
+import EditarPerfil from "../pages/EditarPerfil"; // ya que también existe esa opción
+
 
 const AppRouter = () => {
     return (
@@ -28,6 +31,8 @@ const AppRouter = () => {
                         <Route path="tareas" element={<Tareas />} />
                         <Route path="pagos" element={<Pagos />} />
                         <Route path="perfil" element={<Perfil />} />
+                        <Route path="perfil/editar" element={<EditarPerfil />} />
+                        <Route path="perfil/cambiar-password" element={<CambiarPassword />} />
                     </Route>
                 </Route>
                 
