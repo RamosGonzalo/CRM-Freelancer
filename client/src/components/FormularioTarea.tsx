@@ -3,6 +3,7 @@ import clienteService from "../services/clienteService";
 import tareaService from "../services/tareaService";
 import type { Cliente } from "../types/Cliente";
 import type { Tarea, TareaForm } from "../types/Tarea";
+import { alertaExito } from "../helpers/alerta";
 
 interface Props {
     onClose: () => void;
@@ -53,9 +54,12 @@ const FormularioTarea = ({ onClose, onTareaAgregada, tarea }: Props) => {
         try {
         if (tarea && tarea._id) {
             await tareaService.editarTarea(tarea._id, form, token);
-        } else {
+            alertaExito("Tarea editada correctamente");
+            } else {
             await tareaService.crearTarea(form, token);
+            alertaExito("Tarea creada correctamente");
         }
+
         onTareaAgregada();
         onClose();
         } catch (error) {
@@ -77,7 +81,7 @@ const FormularioTarea = ({ onClose, onTareaAgregada, tarea }: Props) => {
                 value={form.titulo}
                 onChange={handleChange}
                 required
-                className="w-full border p-2 rounded"
+                className="w-full border cursor-pointer p-2 rounded"
             />
             </div>
 
@@ -88,7 +92,7 @@ const FormularioTarea = ({ onClose, onTareaAgregada, tarea }: Props) => {
                 name="descripcion"
                 value={form.descripcion}
                 onChange={handleChange}
-                className="w-full border p-2 rounded"
+                className="w-full border cursor-pointer p-2 rounded"
             />
             </div>
 
@@ -100,7 +104,7 @@ const FormularioTarea = ({ onClose, onTareaAgregada, tarea }: Props) => {
                 name="fechaEntrega"
                 value={form.fechaEntrega}
                 onChange={handleChange}
-                className="w-full border p-2 rounded"
+                className="w-full border cursor-pointer p-2 rounded"
             />
             </div>
 
@@ -112,7 +116,7 @@ const FormularioTarea = ({ onClose, onTareaAgregada, tarea }: Props) => {
                 value={form.cliente}
                 onChange={handleChange}
                 required
-                className="w-full border p-2 rounded"
+                className="w-full border cursor-pointer p-2 rounded"
             >
                 <option value="">-- Seleccionar --</option>
                 {clientes.map((cliente) => (
@@ -121,6 +125,21 @@ const FormularioTarea = ({ onClose, onTareaAgregada, tarea }: Props) => {
                 </option>
                 ))}
             </select>
+            </div>
+
+            <div>
+                <label htmlFor="estado" className="block text-slate-700 mb-1 font-medium">Estado</label>
+                <select
+                    id="estado"
+                    name="estado"
+                    value={form.estado}
+                    onChange={handleChange}
+                    required
+                    className="w-full border cursor-pointer p-2 rounded"
+                >
+                    <option value="pendiente">Pendiente</option>
+                    <option value="completada">Completada</option>
+                </select>
             </div>
 
             <div className="flex justify-end space-x-2">
