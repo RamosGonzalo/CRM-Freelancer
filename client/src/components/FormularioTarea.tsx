@@ -3,7 +3,7 @@ import clienteService from "../services/clienteService";
 import tareaService from "../services/tareaService";
 import type { Cliente } from "../types/Cliente";
 import type { Tarea, TareaForm } from "../types/Tarea";
-import { alertaExito } from "../helpers/alerta";
+import { alertaError, alertaExito } from "../helpers/alerta";
 
 interface Props {
     onClose: () => void;
@@ -50,6 +50,11 @@ const FormularioTarea = ({ onClose, onTareaAgregada, tarea }: Props) => {
         e.preventDefault();
         const token = localStorage.getItem("token");
         if (!token) return;
+        const hoy = new Date().toISOString().slice(0, 10);
+        if (form.fechaEntrega < hoy) {
+            alertaError("La fecha de entrega no puede ser anterior a hoy.");
+            return;
+        }
 
         try {
         if (tarea && tarea._id) {
@@ -103,6 +108,7 @@ const FormularioTarea = ({ onClose, onTareaAgregada, tarea }: Props) => {
                 id="fechaEntrega"
                 name="fechaEntrega"
                 value={form.fechaEntrega}
+                min={new Date().toISOString().slice(0, 10)}
                 onChange={handleChange}
                 className="w-full border p-2 rounded"
             />

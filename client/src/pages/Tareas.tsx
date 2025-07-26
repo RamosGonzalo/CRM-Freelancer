@@ -96,7 +96,10 @@ const Tareas = () => {
                             <td className="p-4">{tarea.titulo}</td>
                             <td className="p-4">{tarea.cliente?.nombre}</td>
                             <td className="p-4">{tarea.descripcion}</td>
-                            <td className="p-4">{new Date(tarea.fechaEntrega).toLocaleDateString()}</td>
+                            <td className="p-4">{new Date(tarea.fechaEntrega).toLocaleDateString("es-AR", {
+                                timeZone: "UTC"
+                                })}
+                            </td>
                             <td className="p-4 capitalize">
                                 <span className={`px-1 py-1 rounded text-xs font-medium 
                                     ${tarea.estado === "finalizado" ? "bg-green-100 text-green-700" : "bg-yellow-100 text-yellow-700"}`}>
