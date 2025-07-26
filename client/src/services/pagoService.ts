@@ -43,4 +43,4 @@ const pagoService = {
     },
 };
 
-export default pagoService;
+export default pagoService

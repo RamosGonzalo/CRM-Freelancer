@@ -4,8 +4,8 @@ import { FiArrowLeft } from "react-icons/fi";
 import { AuthContext } from "../context/AuthContext";
 
 const Perfil = () => {
-    const navigate = useNavigate();
-    const { auth } = useContext(AuthContext);
+    const navigate = useNavigate()
+    const { auth } = useContext(AuthContext)
 
     return (
         <section className="font-inter px-6 py-10 space-y-6">

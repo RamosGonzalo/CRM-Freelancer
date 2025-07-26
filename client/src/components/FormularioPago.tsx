@@ -34,7 +34,7 @@ const FormularioPago = ({ onClose, onPagoGuardado, pago }: Props) => {
         };
 
         obtenerClientes();
-    }, []);
+    }, [])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setForm({

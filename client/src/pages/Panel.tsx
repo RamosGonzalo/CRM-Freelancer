@@ -11,12 +11,12 @@ import type { Pago } from "../types/Pago";
 const Panel = () => {
     const navigate = useNavigate()
     const [totalClientes, setTotalClientes] = useState(0)
-    const [completadas, setCompletadas] = useState(0);
-    const [pendientes, setPendientes] = useState(0);
-    const [proximas, setProximas] = useState<Tarea[]>([]);
-    const [totalPagado, setTotalPagado] = useState(0);
-    const [ultimos, setUltimos] = useState<Pago[]>([]);
-    const [monedaSeleccionada, setMonedaSeleccionada] = useState("USD");
+    const [completadas, setCompletadas] = useState(0)
+    const [pendientes, setPendientes] = useState(0)
+    const [proximas, setProximas] = useState<Tarea[]>([])
+    const [totalPagado, setTotalPagado] = useState(0)
+    const [ultimos, setUltimos] = useState<Pago[]>([])
+    const [monedaSeleccionada, setMonedaSeleccionada] = useState("USD")
 
     useEffect(() => {
         const token = localStorage.getItem('token');

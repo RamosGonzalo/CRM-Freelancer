@@ -43,7 +43,7 @@ const Clientes = () => {
 
     useEffect(() => {
         obtenerClientes();
-    }, []);
+    }, [])
 
     return (
         <>

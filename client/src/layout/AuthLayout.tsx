@@ -9,7 +9,6 @@ const AuthLayout = () => {
                     Free</span><span className="text-slate-600">Manage</span>
                 </h1>
 
-                {/* pagina hija */}
                 <Outlet />
             </div>
         </main>

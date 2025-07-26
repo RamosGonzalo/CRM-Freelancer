@@ -44,7 +44,7 @@ const Tareas = () => {
             console.error("Error al eliminar tarea", error);
             alertaError("Hubo un error al eliminar la tarea");
         }
-    };
+    }
 
     return (
         <>

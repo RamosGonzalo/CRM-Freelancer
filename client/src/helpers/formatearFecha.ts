@@ -6,4 +6,4 @@ export const formatearFecha = (fechaISO: string): string => {
         month: "2-digit",
         year: "numeric"
     });
-};
+}

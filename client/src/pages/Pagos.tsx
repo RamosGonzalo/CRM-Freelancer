@@ -43,7 +43,7 @@ const Pagos = () => {
         console.error("Error al eliminar pago", error);
         alertaError("Hubo un error al eliminar el pago");
     }
-};
+}
 
     return (
         <>

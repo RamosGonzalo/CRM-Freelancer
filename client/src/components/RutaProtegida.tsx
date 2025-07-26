@@ -7,7 +7,7 @@ const RutaProtegida = () => {
 
     if (auth === null || !auth.id) 
     {
-        return <Navigate to="/" />;
+        return <Navigate to="/" />
     }
 
     return <Outlet />

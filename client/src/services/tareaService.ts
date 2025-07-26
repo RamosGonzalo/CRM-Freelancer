@@ -43,4 +43,4 @@ const tareaService = {
     }
 };
 
-export default tareaService;
+export default tareaService

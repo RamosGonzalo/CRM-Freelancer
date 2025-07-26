@@ -10,7 +10,7 @@ const clienteService = {
             Authorization: `Bearer ${token}`,
             },
         });
-        return res.data;
+        return res.data
     },
     obtenerClientes: async (token: string) => {
         const res = await axios.get(API_URL, {

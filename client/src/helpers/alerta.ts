@@ -60,5 +60,5 @@ export const confirmarCambiarPassword = async (): Promise<boolean> => {
         cancelButtonText: "Cancelar",
     })
 
-    return res.isConfirmed;
+    return res.isConfirmed
 }

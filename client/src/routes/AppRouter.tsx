@@ -10,7 +10,7 @@ import Tareas from "../pages/Tareas";
 import Pagos from "../pages/Pagos";
 import Perfil from "../pages/Perfil";
 import CambiarPassword from "../pages/CambiarPassword";
-import EditarPerfil from "../pages/EditarPerfil"; // ya que también existe esa opción
+import EditarPerfil from "../pages/EditarPerfil";
 
 
 const AppRouter = () => {

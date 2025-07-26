@@ -37,7 +37,7 @@ const FormularioTarea = ({ onClose, onTareaAgregada, tarea }: Props) => {
         };
 
         fetchClientes();
-    }, []);
+    }, [])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         setForm({

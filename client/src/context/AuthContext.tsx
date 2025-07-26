@@ -11,4 +11,4 @@ interface AuthContextType {
     setAuth: React.Dispatch<React.SetStateAction<Usuario | null>>;
 }
 
-export const AuthContext = createContext<AuthContextType>({} as AuthContextType);
+export const AuthContext = createContext<AuthContextType>({} as AuthContextType)

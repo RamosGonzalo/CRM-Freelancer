@@ -6,10 +6,10 @@ import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [password, setPassword] = useState("")
     const [error, setError] = useState("");
     const { setAuth } = useContext(AuthContext)
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();

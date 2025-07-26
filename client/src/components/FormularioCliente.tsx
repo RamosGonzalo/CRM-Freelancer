@@ -4,9 +4,9 @@ import type { Cliente } from "../types/Cliente";
 import { alertaExito, alertaError } from "../helpers/alerta";
 
 interface Props {
-    onClose: () => void;
-    onClienteAgregado: () => void;
-    cliente?: Cliente | null;
+    onClose: () => void
+    onClienteAgregado: () => void
+    cliente?: Cliente | null
 }
 
 const FormularioCliente = ({ onClose, onClienteAgregado, cliente }: Props) => {
