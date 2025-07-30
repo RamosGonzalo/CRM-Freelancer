@@ -1,55 +1,55 @@
 # FreeManage 🚀
 
-**FreeManage** es una aplicación **CRM (Customer Relationship Management)** pensada especialmente para **freelancers** que buscan organizar de forma eficiente sus **clientes, tareas, pagos y perfil personal** desde un solo lugar.
+**FreeManage** is a **CRM (Customer Relationship Management)** application specially designed for **freelancers** who want to efficiently manage their **clients, tasks, payments, and personal profile** all in one place.
 
 ---
 
-## 📌 Descripción
+## 📌 Description
 
-FreeManage fue creado como una solución integral, moderna y ligera para quienes trabajan de forma independiente y necesitan tener el control total de su actividad profesional.  
-Permite:
+FreeManage was created as an all-in-one, modern, and lightweight solution for independent professionals who need full control over their workflow.  
+It allows you to:
 
-- Registrar y autenticar usuarios de forma segura
-- Administrar clientes y sus tareas asignadas
-- Registrar pagos y consultar el historial por moneda
-- Editar datos personales y cambiar la contraseña
-- Todo en un entorno limpio, rápido y responsivo
+- Register and authenticate users securely  
+- Manage clients and their assigned tasks  
+- Log payments and view history by currency  
+- Edit personal information and change password  
+- All in a clean, fast, and responsive environment
 
 ---
 
-## ⚙️ Stack Tecnológico
+## ⚙️ Tech Stack
 
 ### 🖥️ Frontend
-- React 19 + Vite
-- TypeScript
-- TailwindCSS
-- React Router DOM
-- Axios
-- SweetAlert2
+- React 19 + Vite  
+- TypeScript  
+- TailwindCSS  
+- React Router DOM  
+- Axios  
+- SweetAlert2  
 
 ### 🛠️ Backend
-- Node.js + Express
-- MongoDB + Mongoose
-- TypeScript
-- JWT (JSON Web Tokens)
-- Bcrypt
+- Node.js + Express  
+- MongoDB + Mongoose  
+- TypeScript  
+- JWT (JSON Web Tokens)  
+- Bcrypt  
 
 ---
 
-## ✨ Funcionalidades principales
+## ✨ Main Features
 
-- 🔐 Autenticación segura con JWT
-- 🔒 Rutas protegidas para usuarios autenticados
-- 👥 CRUD completo de clientes
-- ✅ Gestión de tareas por cliente con estado y fecha de entrega
-- 💸 Registro de pagos recibidos con filtro por moneda
-- 🧑‍💻 Edición de perfil de usuario y cambio de contraseña
-- 🧼 UI minimalista, moderna y adaptable a todos los dispositivos
-- 📁 Código organizado y fácil de mantener
+- 🔐 Secure authentication with JWT  
+- 🔒 Protected routes for authenticated users  
+- 👥 Full CRUD for clients  
+- ✅ Task management per client with status and due date  
+- 💸 Payment logging with currency filter  
+- 🧑‍💻 User profile editing and password change  
+- 🧼 Minimalist, modern, and fully responsive UI  
+- 📁 Clean and maintainable code structure
 
 ---
 
-## 📸 Capturas
+## 📸 Screenshots
 
 <img width="1920" height="989" alt="image" src="https://github.com/user-attachments/assets/57d7458b-2a6f-4c60-bc9d-b1a2d74116b9" />
 
@@ -73,10 +73,10 @@ Permite:
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 Author
 
-Desarrollado con dedicación por [Gonzalo Ramos](https://github.com/RamosGonzalo)
+Developed with dedication by [Gonzalo Ramos](https://github.com/RamosGonzalo)
 
 ---
 
-> Si te gustó este proyecto, no dudes en dejar una ⭐ o conectarte conmigo por [LinkedIn](https://www.linkedin.com/in/ramosgonzalo/)
+> If you enjoyed this project, feel free to leave a ⭐ or connect with me on [LinkedIn](https://www.linkedin.com/in/ramosgonzalo/)
